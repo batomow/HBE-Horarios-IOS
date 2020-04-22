@@ -8,14 +8,6 @@
 
 import UIKit
 
-class CustomTableViewCell: UITableViewCell{
-    @IBOutlet weak var dia: UILabel!
-    @IBOutlet weak var horario: UILabel!
-    @IBOutlet weak var entrada: UILabel!
-    @IBOutlet weak var salida_comida: UILabel!
-    @IBOutlet weak var entrada_comida: UILabel!
-    @IBOutlet weak var salida: UILabel!
-}
 class ResumeData {
     var dia: String
     var horario: String
@@ -35,8 +27,13 @@ class ResumeData {
 
 class HorarioViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
 
+    @IBOutlet weak var tableDia: UITableView!
+    @IBOutlet weak var tableHorario: UITableView!
+    @IBOutlet weak var tableEntrada: UITableView!
+    @IBOutlet weak var tableComidaSalida: UITableView!
+    @IBOutlet weak var tableComidaEntrada: UITableView!
+    @IBOutlet weak var tableSalida: UITableView!
     
-    @IBOutlet weak var tableView: UITableView!
     var testData: [ResumeData] = [
         ResumeData(dia: "Dia", horario: "Horario", entrada: "Entrada", salida_comida: "Salida Comida", entrada_comida: "Entrada Comida", salida: "Salida"),
         ResumeData(dia: "Lunes", horario: "6:00am - 4:00pm", entrada: "6:12am", salida_comida: "12:40pm", entrada_comida: "2:00pm", salida: "4:10pm"),
@@ -49,43 +46,48 @@ class HorarioViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.dataSource = self
-        tableView.delegate = self
-        // Do any additional setup after loading the view.
+        tableDia.delegate = self
+        tableDia.dataSource = self
+        
+        tableHorario.delegate = self
+        tableHorario.dataSource = self
+        
+        tableEntrada.delegate = self
+        tableEntrada.dataSource = self
+        
+        tableComidaSalida.delegate = self
+        tableComidaSalida.dataSource = self
+        
+        tableComidaEntrada.delegate = self
+        tableComidaEntrada.dataSource = self
+        
+        tableSalida.delegate = self
+        tableSalida.dataSource = self
     }
     
     // MARK: - Table View Stuff
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return testData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "idCell", for: indexPath) as! CustomTableViewCell
-        if indexPath.row != 7 {
-            cell.dia.text = testData[indexPath.row].dia
-            cell.horario.text = testData[indexPath.row].horario
-            cell.entrada.text = testData[indexPath.row].entrada
-            cell.salida_comida.text = testData[indexPath.row].salida_comida
-            cell.entrada_comida.text = testData[indexPath.row].entrada_comida
-            cell.salida.text = testData[indexPath.row].salida
-        }else{
-            cell.dia.text = testData[indexPath.row].dia
-            
-            cell.horario.text = ""
-            cell.horario.backgroundColor = UIColor.green
-            
-            cell.entrada.text = ""
-            cell.entrada.backgroundColor = UIColor.green
-            
-            cell.salida_comida.text = ""
-            cell.salida_comida.backgroundColor = UIColor.green
-            
-            cell.entrada_comida.text = ""
-            cell.entrada_comida.backgroundColor = UIColor.green
-            
-            cell.salida.text = ""
-            cell.salida.backgroundColor = UIColor.green
+        let cell = tableView.dequeueReusableCell(withIdentifier: "idCell", for: indexPath)
+        if tableView.isEqual(tableDia) {
+            cell.textLabel?.text = testData[indexPath.row].dia
+        }else if tableView.isEqual(tableHorario) {
+            cell.textLabel?.text = testData[indexPath.row].horario
+        }else if tableView.isEqual(tableEntrada){
+            cell.textLabel?.text = testData[indexPath.row].entrada
+        }else if tableView.isEqual(tableComidaSalida){
+            cell.textLabel?.text = testData[indexPath.row].salida_comida
+        }else if tableView.isEqual(tableComidaEntrada){
+            cell.textLabel?.text = testData[indexPath.row].entrada_comida
+        }else { // salida
+            cell.textLabel?.text = testData[indexPath.row].salida
         }
         return cell
     }
