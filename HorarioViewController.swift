@@ -91,7 +91,13 @@ class HorarioViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         return cell
     }
+    
+    // MARK: - Orientation
 
+    override func viewWillAppear(_ animated: Bool) {
+        AppDelegate.AppUtility.lockOrientation(UIInterfaceOrientationMask.landscapeRight, andRotateTo: UIInterfaceOrientation.landscapeRight)
+    }
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
