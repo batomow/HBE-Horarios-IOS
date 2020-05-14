@@ -42,12 +42,12 @@ class HorarioViewController: UIViewController, UITableViewDelegate, UITableViewD
     var testData: [ResumeData] = [
         ResumeData(dia: "Dia", horario: "Horario", entrada: "Entrada", salida_comida: "Salida Comida", entrada_comida: "Entrada Comida", salida: "Salida"),
         ResumeData(dia: "Lunes", horario: "6:00am - 4:00pm", entrada: "6:12am", salida_comida: "12:40pm", entrada_comida: "2:00pm", salida: "4:10pm"),
-        ResumeData(dia: "Martes", horario: "6:00am - 4:00pm", entrada: "6:12am", salida_comida: "12:40pm", entrada_comida: "2:00pm", salida: "4:10pm"),
-        ResumeData(dia: "Miercoles", horario: "6:00am - 4:00pm", entrada: "6:12am", salida_comida: "12:40pm", entrada_comida: "2:00pm", salida: "4:10pm"),
-        ResumeData(dia: "Jueves", horario: "6:00am - 4:00pm", entrada: "6:12am", salida_comida: "12:40pm", entrada_comida: "2:00pm", salida: "4:10pm"),
-        ResumeData(dia: "Viernes", horario: "6:00am - 4:00pm", entrada: "6:12am", salida_comida: "12:40pm", entrada_comida: "2:00pm", salida: "4:10pm"),
-        ResumeData(dia: "Sabado", horario: "6:00am - 4:00pm", entrada: "6:12am", salida_comida: "12:40pm", entrada_comida: "2:00pm", salida: "4:10pm"),
-        ResumeData(dia: "Domingo", horario: "6:00am - 4:00pm", entrada: "6:12am", salida_comida: "12:40pm", entrada_comida: "2:00pm", salida: "4:10pm")]
+        ResumeData(dia: "Martes", horario: "6:00am - 4:00pm", entrada: "6:00am", salida_comida: "12:40pm", entrada_comida: "2:00pm", salida: "4:10pm"),
+        ResumeData(dia: "Miercoles", horario: "6:00am - 4:00pm", entrada: "6:00am", salida_comida: "12:40pm", entrada_comida: "2:00pm", salida: "3:50pm"),
+        ResumeData(dia: "Jueves", horario: "6:00am - 4:00pm", entrada: "6:12am", salida_comida: "12:40pm", entrada_comida: "2:00pm", salida: "4:00pm"),
+        ResumeData(dia: "Viernes", horario: "6:00am - 4:00pm", entrada: "6:00am", salida_comida: "12:40pm", entrada_comida: "2:00pm", salida: "4:10pm"),
+        ResumeData(dia: "Sabado", horario: "6:00am - 4:00pm", entrada: "6:00am", salida_comida: "12:40pm", entrada_comida: "2:00pm", salida: "3:50pm"),
+        ResumeData(dia: "Domingo", horario: "--", entrada: "--", salida_comida: "--", entrada_comida: "--", salida: "--")]
     
     override func viewDidLoad() {
         super.viewDidLoad()
