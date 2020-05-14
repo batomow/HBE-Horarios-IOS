@@ -17,6 +17,7 @@ class PopupMarcaje: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        lbTitulo.numberOfLines = 2
         if entrada {
             lbTitulo.text = "Entrada Tardia"
         }
