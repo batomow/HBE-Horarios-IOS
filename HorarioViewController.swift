@@ -63,6 +63,19 @@ class HorarioViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         tableSalida.delegate = self
         tableSalida.dataSource = self
+        
+    
+    }
+    
+    
+    @IBAction func tapMEntrada(_ sender: UIButton) {
+        let cell = sender.superview?.superview as! UITableViewCell
+        let indexPath = self.tableEntrada.indexPath(for: cell)
+    }
+    
+    @IBAction func tapMSalida(_ sender: UIButton) {
+        let cell = sender.superview?.superview as! UITableViewCell
+        let indexPath = self.tableEntrada.indexPath(for: cell)
     }
     
     // MARK: - Table View Stuff
@@ -91,6 +104,7 @@ class HorarioViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         return cell
     }
+    
     
     // MARK: - Orientation
 
