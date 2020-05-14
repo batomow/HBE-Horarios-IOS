@@ -16,6 +16,7 @@
 		0722041A24270FEE00244A8B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0722041824270FEE00244A8B /* LaunchScreen.storyboard */; };
 		662DAB89244FFDC1000F4A33 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662DAB88244FFDC1000F4A33 /* RoundButton.swift */; };
 		662DAB8B244FFE08000F4A33 /* Socios.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662DAB8A244FFE08000F4A33 /* Socios.swift */; };
+		C7FCC396246CD48500D02D6F /* PopupResumenDia.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FCC395246CD48500D02D6F /* PopupResumenDia.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		0722041B24270FEE00244A8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		662DAB88244FFDC1000F4A33 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		662DAB8A244FFE08000F4A33 /* Socios.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Socios.swift; sourceTree = "<group>"; };
+		C7FCC395246CD48500D02D6F /* PopupResumenDia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupResumenDia.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				0722040F24270FEC00244A8B /* SceneDelegate.swift */,
 				0722041124270FEC00244A8B /* ViewController.swift */,
 				0722041324270FEC00244A8B /* Main.storyboard */,
+				C7FCC395246CD48500D02D6F /* PopupResumenDia.swift */,
 				0722041624270FEE00244A8B /* Assets.xcassets */,
 				0722041824270FEE00244A8B /* LaunchScreen.storyboard */,
 				0722041B24270FEE00244A8B /* Info.plist */,
@@ -153,6 +156,7 @@
 				071AF388244FC4600047F869 /* HorarioViewController.swift in Sources */,
 				0722040E24270FEC00244A8B /* AppDelegate.swift in Sources */,
 				0722041024270FEC00244A8B /* SceneDelegate.swift in Sources */,
+				C7FCC396246CD48500D02D6F /* PopupResumenDia.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
