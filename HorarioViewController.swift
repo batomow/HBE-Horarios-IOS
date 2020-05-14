@@ -25,6 +25,11 @@ class ResumeData {
     }
 }
 
+class CustomCell: UITableViewCell {
+    @IBOutlet weak var lbtitulo: UILabel!
+    @IBOutlet weak var buton: UIButton!
+}
+
 class HorarioViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
 
     @IBOutlet weak var tableDia: UITableView!
@@ -88,22 +93,44 @@ class HorarioViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "idCell", for: indexPath)
-        if tableView.isEqual(tableDia) {
-            cell.textLabel?.text = testData[indexPath.row].dia
-        }else if tableView.isEqual(tableHorario) {
-            cell.textLabel?.text = testData[indexPath.row].horario
-        }else if tableView.isEqual(tableEntrada){
-            cell.textLabel?.text = testData[indexPath.row].entrada
-        }else if tableView.isEqual(tableComidaSalida){
-            cell.textLabel?.text = testData[indexPath.row].salida_comida
-        }else if tableView.isEqual(tableComidaEntrada){
-            cell.textLabel?.text = testData[indexPath.row].entrada_comida
-        }else { // salida
-            cell.textLabel?.text = testData[indexPath.row].salida
+        if tableView.isEqual(tableEntrada){
+            let cell = tableView.dequeueReusableCell(withIdentifier: "idCustomCell", for: indexPath) as! CustomCell
+            cell.lbtitulo.text = testData[indexPath.row].entrada
+            if indexPath.row == 1 || indexPath.row == 4 {
+                cell.buton.isHidden = false
+            }
+            else {
+                cell.buton.isHidden = true
+            }
+            return cell
         }
-        return cell
+        else if tableView.isEqual(tableSalida){
+            let cell = tableView.dequeueReusableCell(withIdentifier: "idCustomCell", for: indexPath) as! CustomCell
+            cell.lbtitulo.text = testData[indexPath.row].salida
+            if indexPath.row == 3 || indexPath.row == 6 {
+                cell.buton.isHidden = false
+            }
+            else {
+                cell.buton.isHidden = true
+            }
+            return cell
+        }
+        else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "idCell", for: indexPath)
+            if tableView.isEqual(tableDia) {
+                cell.textLabel?.text = testData[indexPath.row].dia
+            }else if tableView.isEqual(tableHorario) {
+                cell.textLabel?.text = testData[indexPath.row].horario
+            }else if tableView.isEqual(tableComidaSalida){
+                cell.textLabel?.text = testData[indexPath.row].salida_comida
+            }else { // entrada comida
+                cell.textLabel?.text = testData[indexPath.row].entrada_comida
+            }
+            return cell
+        }
     }
+    
+    
     
     
     // MARK: - Orientation

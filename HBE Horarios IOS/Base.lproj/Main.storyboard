@@ -87,7 +87,7 @@
                                 </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hebLogo" translatesAutoresizingMaskIntoConstraints="NO" id="UCl-XO-Xqo">
-                                <rect key="frame" x="20" y="49" width="631" height="239"/>
+                                <rect key="frame" x="20" y="49" width="631.00000000000045" height="239"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="UCl-XO-Xqo" secondAttribute="height" multiplier="339:146" id="Bci-3A-zjp"/>
                                 </constraints>
@@ -282,33 +282,41 @@
                                             <constraint firstAttribute="width" secondItem="bjB-uT-62b" secondAttribute="height" multiplier="16:53" id="GyU-PR-uCI"/>
                                         </constraints>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="idCell" textLabel="wvT-A1-6zI" style="IBUITableViewCellStyleDefault" id="DiL-xi-ASU">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="idCustomCell" id="UQN-6c-N4G" customClass="CustomCell" customModule="HBE_Horarios_IOS" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="80" height="32"/>
                                                 <autoresizingMask key="autoresizingMask"/>
-                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DiL-xi-ASU" id="SsY-MB-9uY">
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UQN-6c-N4G" id="FZ8-fM-dDT">
                                                     <rect key="frame" x="0.0" y="0.0" width="80" height="32"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ajo-Tp-5r8">
-                                                            <rect key="frame" x="3" y="7.5" width="17" height="17"/>
+                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mgx-CC-kPP">
+                                                            <rect key="frame" x="2" y="8" width="17" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <state key="normal" image="redBT"/>
                                                             <connections>
-                                                                <action selector="tapMSalida:" destination="uCG-Gz-Dec" eventType="touchUpInside" id="Sic-FT-DVL"/>
-                                                                <segue destination="Ko4-5T-iCY" kind="popoverPresentation" identifier="salida" popoverAnchorView="mqg-FZ-kwc" id="6ar-pj-ssl">
+                                                                <action selector="tapMSalida:" destination="uCG-Gz-Dec" eventType="touchUpInside" id="nRb-q6-PVu"/>
+                                                                <segue destination="Ko4-5T-iCY" kind="popoverPresentation" identifier="salida" popoverAnchorView="mqg-FZ-kwc" id="5hn-oq-q0r">
                                                                     <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                                                 </segue>
                                                             </connections>
                                                         </button>
-                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wvT-A1-6zI">
-                                                            <rect key="frame" x="15" y="0.0" width="50" height="32"/>
-                                                            <autoresizingMask key="autoresizingMask"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kw2-a0-v1d">
+                                                            <rect key="frame" x="22" y="7.5" width="54" height="17"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="Kw2-a0-v1d" firstAttribute="centerY" secondItem="FZ8-fM-dDT" secondAttribute="centerY" id="HEI-z9-vVb"/>
+                                                        <constraint firstItem="Kw2-a0-v1d" firstAttribute="centerX" secondItem="FZ8-fM-dDT" secondAttribute="centerX" id="ugY-TW-zkz"/>
+                                                    </constraints>
                                                 </tableViewCellContentView>
+                                                <accessibility key="accessibilityConfiguration" label="entrada"/>
+                                                <connections>
+                                                    <outlet property="buton" destination="mgx-CC-kPP" id="DXa-P7-VV3"/>
+                                                    <outlet property="lbtitulo" destination="Kw2-a0-v1d" id="fOj-cM-EiO"/>
+                                                </connections>
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
@@ -319,21 +327,14 @@
                                             <constraint firstAttribute="width" secondItem="faL-Tp-Vav" secondAttribute="height" multiplier="16:53" id="zdP-CA-ZPC"/>
                                         </constraints>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="idCell" textLabel="pmx-qx-rAa" style="IBUITableViewCellStyleDefault" id="C6f-l7-Vbr">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="idCustomCell" id="C6f-l7-Vbr" customClass="CustomCell" customModule="HBE_Horarios_IOS" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="80" height="32"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="C6f-l7-Vbr" id="L1u-S3-pfz">
                                                     <rect key="frame" x="0.0" y="0.0" width="80" height="32"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pmx-qx-rAa">
-                                                            <rect key="frame" x="15" y="0.0" width="50" height="32"/>
-                                                            <autoresizingMask key="autoresizingMask"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qj4-41-6xv">
+                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qj4-41-6xv">
                                                             <rect key="frame" x="3" y="7.5" width="17" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <state key="normal" image="redBT"/>
@@ -344,9 +345,23 @@
                                                                 </segue>
                                                             </connections>
                                                         </button>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EUl-t9-IPq">
+                                                            <rect key="frame" x="22" y="7.5" width="54" height="17"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="EUl-t9-IPq" firstAttribute="centerY" secondItem="L1u-S3-pfz" secondAttribute="centerY" id="tzM-7e-0C6"/>
+                                                        <constraint firstItem="EUl-t9-IPq" firstAttribute="centerX" secondItem="L1u-S3-pfz" secondAttribute="centerX" id="vAa-dn-xz1"/>
+                                                    </constraints>
                                                 </tableViewCellContentView>
                                                 <accessibility key="accessibilityConfiguration" label="entrada"/>
+                                                <connections>
+                                                    <outlet property="buton" destination="qj4-41-6xv" id="Z8C-ni-Ec2"/>
+                                                    <outlet property="lbtitulo" destination="EUl-t9-IPq" id="chc-rT-iov"/>
+                                                </connections>
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
@@ -598,6 +613,6 @@
         <image name="redBT" width="81" height="81"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="kwr-Lo-br1"/>
+        <segue reference="5hn-oq-q0r"/>
     </inferredMetricsTieBreakers>
 </document>
