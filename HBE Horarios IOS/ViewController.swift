@@ -35,6 +35,7 @@ class ViewController: UIViewController {
             case .success(let res):
                 DispatchQueue.main.async {self.onLogged(res: res)}
             default:
+                print("step 1")
                 print(response)
             }
         })
@@ -47,13 +48,14 @@ class ViewController: UIViewController {
             present(alerta, animated: true, completion: nil)
         }else{
             let user = tfID.text! //aqui   v   no importa el password
-            let body = APIRequestBody(user: user, password: "whatever", fecha: "4-5-2020")
+            let body = APIRequestBody(user: user, password: "whatever", fecha: "8-6-2020")
             let request = APIRequest(endpoint: "calendar/all")
             request.bigsend(body, completion: { response in
                 switch response {
                 case .success(let res):
                     DispatchQueue.main.async {self.onRetrieveData(res: res)}
                 default:
+                    print("step 2")
                     print(response) // si algo sale mal namas imprime el error
                 }
             })

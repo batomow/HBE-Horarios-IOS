@@ -70,7 +70,7 @@ class HorarioViewController: UIViewController, UITableViewDelegate, UITableViewD
         tableSalida.delegate = self
         tableSalida.dataSource = self
         
-        let currentdias = monolito.current
+        let currentdias = monolito.week1
         for (index, data) in testData.enumerated(){
             if index == 0 {
                 continue

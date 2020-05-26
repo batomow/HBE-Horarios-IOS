@@ -16,8 +16,8 @@ struct User: Codable{
 }
 
 struct Resume: Codable{
-    var overtime: Float
-    var total: Float
+    var overtime: String
+    var total: String
 }
 
 struct Day: Codable{
@@ -31,6 +31,16 @@ struct Day: Codable{
 
 struct Monolito: Codable{
     var user: User
-    var resume: Resume
-    var current: [Day] // semana actual
+    
+    var resume0: Resume
+    var resume1: Resume
+    var resume2: Resume
+    var resume3: Resume
+    var resume4: Resume
+    
+    var week0: [Day]
+    var week1: [Day]
+    var week2: [Day]
+    var week3: [Day]
+    var week4: [Day]
 }
