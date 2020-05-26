@@ -38,15 +38,16 @@ class HorarioViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var tableComidaSalida: UITableView!
     @IBOutlet weak var tableComidaEntrada: UITableView!
     @IBOutlet weak var tableSalida: UITableView!
+    var monolito: Monolito!
     
     var testData: [ResumeData] = [
         ResumeData(dia: "Dia", horario: "Horario", entrada: "Entrada", salida_comida: "Salida Comida", entrada_comida: "Entrada Comida", salida: "Salida"),
-        ResumeData(dia: "Lunes", horario: "6:00am - 4:00pm", entrada: "6:12am", salida_comida: "12:40pm", entrada_comida: "2:00pm", salida: "4:10pm"),
-        ResumeData(dia: "Martes", horario: "6:00am - 4:00pm", entrada: "6:00am", salida_comida: "12:40pm", entrada_comida: "2:00pm", salida: "4:10pm"),
-        ResumeData(dia: "Miercoles", horario: "6:00am - 4:00pm", entrada: "6:00am", salida_comida: "12:40pm", entrada_comida: "2:00pm", salida: "3:50pm"),
-        ResumeData(dia: "Jueves", horario: "6:00am - 4:00pm", entrada: "6:12am", salida_comida: "12:40pm", entrada_comida: "2:00pm", salida: "4:00pm"),
-        ResumeData(dia: "Viernes", horario: "6:00am - 4:00pm", entrada: "6:00am", salida_comida: "12:40pm", entrada_comida: "2:00pm", salida: "4:10pm"),
-        ResumeData(dia: "Sabado", horario: "6:00am - 4:00pm", entrada: "6:00am", salida_comida: "12:40pm", entrada_comida: "2:00pm", salida: "3:50pm"),
+        ResumeData(dia: "Lunes", horario: "--", entrada: "--", salida_comida: "--", entrada_comida: "--", salida: "--"),
+        ResumeData(dia: "Martes", horario: "--", entrada: "--", salida_comida: "--", entrada_comida: "--", salida: "--"),
+        ResumeData(dia: "Miercoles", horario: "--", entrada: "--", salida_comida: "--", entrada_comida: "--", salida: "--"),
+        ResumeData(dia: "Jueves", horario: "--", entrada: "--", salida_comida: "--", entrada_comida: "--", salida: "--"),
+        ResumeData(dia: "Viernes", horario: "--", entrada: "--", salida_comida: "--", entrada_comida: "--", salida: "--"),
+        ResumeData(dia: "Sabado", horario: "--", entrada: "--", salida_comida: "--", entrada_comida: "--", salida: "--"),
         ResumeData(dia: "Domingo", horario: "--", entrada: "--", salida_comida: "--", entrada_comida: "--", salida: "--")]
     
     override func viewDidLoad() {
@@ -69,7 +70,18 @@ class HorarioViewController: UIViewController, UITableViewDelegate, UITableViewD
         tableSalida.delegate = self
         tableSalida.dataSource = self
         
-    
+        let currentdias = monolito.week1
+        for (index, data) in testData.enumerated(){
+            if index == 0 {
+                continue
+            }
+            data.entrada = currentdias[index-1].entry
+            data.salida = currentdias[index-1].exit
+            data.horario = currentdias[index-1].schedule
+            data.salida_comida = currentdias[index-1].breakLeave
+            data.entrada_comida = currentdias[index-1].breakReturn
+        }
+        
     }
     
     

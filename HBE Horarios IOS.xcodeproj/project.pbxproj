@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		070A125A247AFC870079C5BC /* Monolito.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070A1259247AFC870079C5BC /* Monolito.swift */; };
+		070A125C247B018B0079C5BC /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070A125B247B018B0079C5BC /* APIRequest.swift */; };
 		071AF388244FC4600047F869 /* HorarioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071AF387244FC4600047F869 /* HorarioViewController.swift */; };
 		0722040E24270FEC00244A8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0722040D24270FEC00244A8B /* AppDelegate.swift */; };
 		0722041024270FEC00244A8B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0722040F24270FEC00244A8B /* SceneDelegate.swift */; };
@@ -21,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		070A1259247AFC870079C5BC /* Monolito.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Monolito.swift; sourceTree = "<group>"; };
+		070A125B247B018B0079C5BC /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		071AF387244FC4600047F869 /* HorarioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorarioViewController.swift; sourceTree = "<group>"; };
 		0722040A24270FEC00244A8B /* HBE Horarios IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HBE Horarios IOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0722040D24270FEC00244A8B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -50,6 +54,8 @@
 		0722040124270FEC00244A8B = {
 			isa = PBXGroup;
 			children = (
+				070A1259247AFC870079C5BC /* Monolito.swift */,
+				070A125B247B018B0079C5BC /* APIRequest.swift */,
 				071AF387244FC4600047F869 /* HorarioViewController.swift */,
 				0722040C24270FEC00244A8B /* HBE Horarios IOS */,
 				0722040B24270FEC00244A8B /* Products */,
@@ -161,6 +167,8 @@
 				0722040E24270FEC00244A8B /* AppDelegate.swift in Sources */,
 				0722041024270FEC00244A8B /* SceneDelegate.swift in Sources */,
 				C7FCC396246CD48500D02D6F /* PopupResumenDia.swift in Sources */,
+				070A125C247B018B0079C5BC /* APIRequest.swift in Sources */,
+				070A125A247AFC870079C5BC /* Monolito.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
