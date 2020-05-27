@@ -31,14 +31,21 @@ class CustomCell: UITableViewCell {
 }
 
 class HorarioViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
-
+    
+    @IBOutlet weak var lbSemAnt: UILabel!
+    @IBOutlet weak var btnSemAnt: UIButton!
+    @IBOutlet weak var btnSigSem: UIButton!
+    @IBOutlet weak var lbSigSem: UILabel!
     @IBOutlet weak var tableDia: UITableView!
     @IBOutlet weak var tableHorario: UITableView!
     @IBOutlet weak var tableEntrada: UITableView!
     @IBOutlet weak var tableComidaSalida: UITableView!
     @IBOutlet weak var tableComidaEntrada: UITableView!
     @IBOutlet weak var tableSalida: UITableView!
+    //Variable de tipo monolito
     var monolito: Monolito!
+    //contador globar que indicara la semana actual
+    var sem: Int!
     
     var testData: [ResumeData] = [
         ResumeData(dia: "Dia", horario: "Horario", entrada: "Entrada", salida_comida: "Salida Comida", entrada_comida: "Entrada Comida", salida: "Salida"),
@@ -69,7 +76,9 @@ class HorarioViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         tableSalida.delegate = self
         tableSalida.dataSource = self
-        
+        //se marca que la semana inicial sea la 1
+        sem = 1
+        //se cargan los datos de la semana uno del monolito
         let currentdias = monolito.week1
         for (index, data) in testData.enumerated(){
             if index == 0 {
@@ -164,4 +173,73 @@ class HorarioViewController: UIViewController, UITableViewDelegate, UITableViewD
             viewSal.entrada = false
         }
     }
+    
+    // MARK: - Botones semanas
+    //Accion del boton siguiente semana
+    @IBAction func sigSemAct(_ sender: UIButton) {
+        //Se resta 1 al valor de semana
+        sem -= 1
+        //DEpendiendo del numero de sem, se mandara a cargar su semana correspondiente
+        if (sem == 0){
+            carga(currentdias: monolito.week0)
+            //Al llegar a la ultima semana(Semana futura), se ocultan los botones de siguiente semana
+            btnSigSem.isHidden = true
+            lbSigSem.isHidden = true
+        } else if (sem == 1){
+            carga(currentdias: monolito.week1)
+        } else if (sem == 2){
+            carga(currentdias: monolito.week2)
+        } else if (sem == 3){
+            carga(currentdias: monolito.week3)
+            //Al llegar a la segunda semana pasada, aparecen los botones de semana anterior
+            btnSemAnt.isHidden = false
+            lbSemAnt.isHidden = false
+        }
+        
+    }
+    
+    @IBAction func SemAntAct(_ sender: UIButton) {
+        //Se suma 1 al valor de semana
+        sem += 1
+        //DEpendiendo del numero de sem, se mandara a cargar su semana correspondiente
+        if (sem == 1){
+            carga(currentdias: monolito.week1)
+            //Al llegar a la semana actual, aparecen los botones de siguiente semana
+            btnSigSem.isHidden = false
+            lbSigSem.isHidden = false
+        } else if (sem == 2){
+            carga(currentdias: monolito.week2)
+        } else if (sem == 3){
+            carga(currentdias: monolito.week3)
+        } else if (sem == 4){
+            carga(currentdias: monolito.week4)
+            //Al llegar a la ultima semana, desapareceran los botones de semana anterior
+            btnSemAnt.isHidden = true
+            lbSemAnt.isHidden = true
+        }
+    }
+    
+    
+    //Funcion que carga la semana indicada y recarga las tablas para ensenar la info correspondiente
+    func carga(currentdias : [Day]){
+        for (index, data) in testData.enumerated(){
+            if index == 0 {
+                continue
+            }
+            //Se carga la informacion
+            data.entrada = currentdias[index-1].entry
+            data.salida = currentdias[index-1].exit
+            data.horario = currentdias[index-1].schedule
+            data.salida_comida = currentdias[index-1].breakLeave
+            data.entrada_comida = currentdias[index-1].breakReturn
+        }
+        //Se recargan las tablas
+        tableDia.reloadData()
+        tableHorario.reloadData()
+        tableEntrada.reloadData()
+        tableComidaSalida.reloadData()
+        tableComidaEntrada.reloadData()
+        tableSalida.reloadData()
+    }
+    
 }
