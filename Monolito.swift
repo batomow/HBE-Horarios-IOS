@@ -27,6 +27,8 @@ struct Day: Codable{
     var entry: String
     var exit: String
     var breakLeave: String
+    var total: String
+    var overtime: String
 }
 
 struct Monolito: Codable{
