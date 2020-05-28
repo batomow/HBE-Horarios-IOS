@@ -117,7 +117,7 @@ class HorarioViewController: UIViewController, UITableViewDelegate, UITableViewD
         if tableView.isEqual(tableEntrada){
             let cell = tableView.dequeueReusableCell(withIdentifier: "idCustomCell", for: indexPath) as! CustomCell
             cell.lbtitulo.text = testData[indexPath.row].entrada
-            if indexPath.row == 1 || indexPath.row == 4 {
+            if entraTarde(index: indexPath.row)  {
                 cell.buton.isHidden = false
             }
             else {
@@ -128,7 +128,7 @@ class HorarioViewController: UIViewController, UITableViewDelegate, UITableViewD
         else if tableView.isEqual(tableSalida){
             let cell = tableView.dequeueReusableCell(withIdentifier: "idCustomCell", for: indexPath) as! CustomCell
             cell.lbtitulo.text = testData[indexPath.row].salida
-            if indexPath.row == 3 || indexPath.row == 6 {
+            if salidaTemprano(index: indexPath.row) {
                 cell.buton.isHidden = false
             }
             else {
@@ -150,9 +150,6 @@ class HorarioViewController: UIViewController, UITableViewDelegate, UITableViewD
             return cell
         }
     }
-    
-    
-    
     
     // MARK: - Orientation
 
@@ -240,6 +237,55 @@ class HorarioViewController: UIViewController, UITableViewDelegate, UITableViewD
         tableComidaSalida.reloadData()
         tableComidaEntrada.reloadData()
         tableSalida.reloadData()
+    }
+    
+    // MARK: - Logica Marcajes
+    //Funcion que comprueba si el usuario entro despues de su hora marcada de entrada
+    func entraTarde(index : Int) -> Bool{
+        //Si la entrada tiene datos y el index no es 0, se hacen los calculos
+        if (testData[index].entrada != "--" && index != 0){
+            //Se parte el string de horario para tener las dos horas de manera separada
+            let horario = testData[index].horario.split(separator: "-")
+            //Se crea un date formatter para poder convertir de string a date
+            let dataFormatter = DateFormatter()
+            dataFormatter.dateFormat = "HH':'mm"
+            //Se convierte la primera hora del horario al tipo date
+            let date1 = dataFormatter.date(from: String(horario[0]))!
+            //Se convierte la hora de entrada al tipo date
+            let date2 = dataFormatter.date(from: testData[index].entrada)!
+            //Si la primera hora de entradar es mayo a la agendada, se regresa false
+            if (date1 < date2){
+                return true
+            } else {
+                return false
+            }
+        } else {
+            return false
+        }
+    }
+    
+    //Funcion que comprueba si el usuario salio antes de su hora marcada de salida
+    func salidaTemprano(index : Int) -> Bool{
+        //Si la salida tiene datos y el index no es 0, se hacen los calculos
+        if (testData[index].salida != "--" && index != 0){
+            //Se parte el string de horario para tener las dos horas de manera separada
+            let horario = testData[index].horario.split(separator: "-")
+            //Se crea un date formatter para poder convertir de string a date
+            let dataFormatter = DateFormatter()
+            dataFormatter.dateFormat = "HH':'mm"
+            //Se convierte la segunda hora del horario al tipo date
+            let date1 = dataFormatter.date(from: String(horario[1]))!
+            //Se convierte la hora de salida al tipo date
+            let date2 = dataFormatter.date(from: testData[index].salida)!
+            //Si la hora de salida agendada es mayor a la hora de salida del usuario
+            if (date1 > date2){
+                return true
+            } else {
+                return false
+            }
+        } else {
+            return false
+        }
     }
     
 }
