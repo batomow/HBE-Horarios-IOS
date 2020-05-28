@@ -253,8 +253,8 @@ class HorarioViewController: UIViewController, UITableViewDelegate, UITableViewD
             //Tabla de Entrada de Comida****
             else {
                 if descanso(index: indexPath.row) {
-                cell.backgroundColor = colorDescanso
-                cell.textLabel?.isHidden = true
+                    cell.backgroundColor = colorDescanso
+                    cell.textLabel?.isHidden = true
                 }
                 else if sem == 0 && indexPath.row != 0{
                     cell.textLabel?.isHidden = true
@@ -297,6 +297,14 @@ class HorarioViewController: UIViewController, UITableViewDelegate, UITableViewD
         else if segue.identifier == "falta"{
             let viewSal = segue.destination as! PopupMarcaje
             viewSal.tipo = "falta"
+        }
+            //View para el popup de marcaje de falta
+        else if segue.identifier == "resumenDia"{
+            let viewRes = segue.destination as! PopupResumenDia
+            viewRes.sem = sem
+            var index = tableDia.indexPathForSelectedRow!
+            viewRes.dia = index.row
+            viewRes.monolito = monolito
         }
     }
     
@@ -416,7 +424,7 @@ class HorarioViewController: UIViewController, UITableViewDelegate, UITableViewD
             return false
         }
     }
-    
+    //funcion que indica si el usuario falto todo un dia
     func falto(index : Int) -> Bool {
         //Si es un dia con horario, el index no es 0 y la semana no es 0 ni 1, se hacen los calculos
         if (testData[index].horario != "--" && index != 0 && sem != 0 && sem != 1 ){
@@ -435,7 +443,7 @@ class HorarioViewController: UIViewController, UITableViewDelegate, UITableViewD
             return false
         }
     }
-    
+    //Funcion que indica si un dia es de descanso o no
     func descanso(index : Int) -> Bool {
         //Si el index no es 0 , se hacen los calculos
         if (index != 0){

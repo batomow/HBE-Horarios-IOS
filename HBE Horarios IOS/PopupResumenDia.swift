@@ -14,15 +14,49 @@ class PopupResumenDia: UIViewController {
     @IBOutlet weak var lbTitulo: UILabel!
     @IBOutlet weak var lbExedente: UILabel!
     @IBOutlet weak var lbNormal: UILabel!
+    //cariable de tipo semana
+    var sem : Int!
+    var dia : Int!
+    //Variable de tipo monolito
+    var monolito : Monolito!
     
     override func viewDidLoad() {
-            super.viewDidLoad()
+        super.viewDidLoad()
+        if (dia == 0){
             lbTitulo.text = "Resumen del Dia"
-            lbExedente.text = "Tiempo Excedente: 0:10"
-            lbNormal.text = "Tiempo Normal: 8:28"
-            popup.layer.cornerRadius = 10
-            popup.layer.masksToBounds = true
+            lbExedente.text = "Tiempo Excedente: "
+            lbNormal.text = "Tiempo Normal: "
+        } else if (sem == 4){
+            let currentDias = monolito.week4
+            lbTitulo.text = "Resumen del Dia"
+            lbExedente.text = "Tiempo Excedente: " + currentDias[dia-1].overtime
+            lbNormal.text = "Tiempo Normal: " + currentDias[dia-1].total
+            
+        } else if (sem == 3){
+            let currentDias = monolito.week3
+            lbTitulo.text = "Resumen del Dia"
+            lbExedente.text = "Tiempo Excedente: " + currentDias[dia-1].overtime
+            lbNormal.text = "Tiempo Normal: " + currentDias[dia-1].total
+        } else if (sem == 2){
+            let currentDias = monolito.week2
+            lbTitulo.text = "Resumen del Dia"
+            lbExedente.text = "Tiempo Excedente: " + currentDias[dia-1].overtime
+            lbNormal.text = "Tiempo Normal: " + currentDias[dia-1].total
+        } else if (sem == 1){
+            let currentDias = monolito.week1
+            lbTitulo.text = "Resumen del Dia"
+            lbExedente.text = "Tiempo Excedente: " + currentDias[dia-1].overtime
+            lbNormal.text = "Tiempo Normal: " + currentDias[dia-1].total
+        } else if (sem == 0){
+            let currentDias = monolito.week0
+            lbTitulo.text = "Resumen del Dia"
+            lbExedente.text = "Tiempo Excedente: " + currentDias[dia-1].overtime
+            lbNormal.text = "Tiempo Normal: " + currentDias[dia-1].total
         }
+        
+        popup.layer.cornerRadius = 10
+        popup.layer.masksToBounds = true
+    }
         
     // MARK: - Boton close popup
     @IBAction func closePopup(_ sender: RoundButton) {
