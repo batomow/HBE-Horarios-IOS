@@ -37,6 +37,11 @@ class HorarioViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var btnSemAnt: UIButton!
     @IBOutlet weak var btnSigSem: UIButton!
     @IBOutlet weak var lbSigSem: UILabel!
+    //Inicializacion de etiquetas
+    @IBOutlet weak var lbNombre: UILabel!
+    @IBOutlet weak var lbSemana: UILabel!
+    @IBOutlet weak var lbTotalHoras: UILabel!
+    @IBOutlet weak var lbTotalEx: UILabel!
     
     //Inicializacion de variables de TableViews
     @IBOutlet weak var tableDia: UITableView!
@@ -89,6 +94,14 @@ class HorarioViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         tableSalida.delegate = self
         tableSalida.dataSource = self
+        
+        //Se cargan las etiquetas con la informacion correspondiente
+        lbNombre.text = monolito.user.firstName + " " + monolito.user.lastName
+        lbSemana.text = "Semana actual"
+        lbTotalHoras.text = "Total horas: " + monolito.resume1.total
+        lbTotalEx.text = "Total horas excedentes: " + monolito.resume1.overtime
+        
+        
         //se marca que la semana inicial sea la 1
         sem = 1
         //se cargan los datos de la semana uno del monolito
@@ -319,15 +332,31 @@ class HorarioViewController: UIViewController, UITableViewDelegate, UITableViewD
             //Al llegar a la ultima semana(Semana futura), se ocultan los botones de siguiente semana
             btnSigSem.isHidden = true
             lbSigSem.isHidden = true
+            //Se cargan las etiquetas correspondientes
+            lbSemana.text = "Semana siguiente"
+            lbTotalHoras.text = "Total horas: " + monolito.resume0.total
+            lbTotalEx.text = "Total horas excedentes: " + monolito.resume0.overtime
         } else if (sem == 1){
             carga(currentdias: monolito.week1)
+            //Se cargan las etiquetas correspondientes
+            lbSemana.text = "Semana actual"
+            lbTotalHoras.text = "Total horas: " + monolito.resume1.total
+            lbTotalEx.text = "Total horas excedentes: " + monolito.resume1.overtime
         } else if (sem == 2){
             carga(currentdias: monolito.week2)
+            //Se cargan las etiquetas correspondientes
+            lbSemana.text = "Primera semana anterior"
+            lbTotalHoras.text = "Total horas: " + monolito.resume2.total
+            lbTotalEx.text = "Total horas excedentes: " + monolito.resume2.overtime
         } else if (sem == 3){
             carga(currentdias: monolito.week3)
             //Al llegar a la segunda semana pasada, aparecen los botones de semana anterior
             btnSemAnt.isHidden = false
             lbSemAnt.isHidden = false
+            //Se cargan las etiquetas correspondientes
+            lbSemana.text = "Segunda semana anterior"
+            lbTotalHoras.text = "Total horas: " + monolito.resume3.total
+            lbTotalEx.text = "Total horas excedentes: " + monolito.resume3.overtime
         }
         
     }
@@ -341,15 +370,31 @@ class HorarioViewController: UIViewController, UITableViewDelegate, UITableViewD
             //Al llegar a la semana actual, aparecen los botones de siguiente semana
             btnSigSem.isHidden = false
             lbSigSem.isHidden = false
+            //Se cargan las etiquetas correspondientes
+            lbSemana.text = "Semana actual"
+            lbTotalHoras.text = "Total horas: " + monolito.resume1.total
+            lbTotalEx.text = "Total horas excedentes: " + monolito.resume1.overtime
         } else if (sem == 2){
             carga(currentdias: monolito.week2)
+            //Se cargan las etiquetas correspondientes
+            lbSemana.text = "Primera semana anterior"
+            lbTotalHoras.text = "Total horas: " + monolito.resume2.total
+            lbTotalEx.text = "Total horas excedentes: " + monolito.resume2.overtime
         } else if (sem == 3){
             carga(currentdias: monolito.week3)
+            //Se cargan las etiquetas correspondientes
+            lbSemana.text = "Segunda semana anterior"
+            lbTotalHoras.text = "Total horas: " + monolito.resume3.total
+            lbTotalEx.text = "Total horas excedentes: " + monolito.resume3.overtime
         } else if (sem == 4){
             carga(currentdias: monolito.week4)
             //Al llegar a la ultima semana, desapareceran los botones de semana anterior
             btnSemAnt.isHidden = true
             lbSemAnt.isHidden = true
+            //Se cargan las etiquetas correspondientes
+            lbSemana.text = "Tercera semana anterior"
+            lbTotalHoras.text = "Total horas: " + monolito.resume4.total
+            lbTotalEx.text = "Total horas excedentes: " + monolito.resume4.overtime
         }
     }
     
