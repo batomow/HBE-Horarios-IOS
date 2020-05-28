@@ -213,7 +213,7 @@ class HorarioViewController: UIViewController, UITableViewDelegate, UITableViewD
                 cell.lbtitulo.text = testData[indexPath.row].horario
                 cell.lbtitulo.isHidden = false
                 cell.backgroundColor = UIColor.white
-                if falto(index: indexPath.row){
+                if falto(index: indexPath.row) {
                     cell.buton.isHidden = false
                 }
                 else {
@@ -418,8 +418,8 @@ class HorarioViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func falto(index : Int) -> Bool {
-        //Si es un dia con horario, el index no es 0 y la semana no es 0, se hacen los calculos
-        if (testData[index].horario != "--" && index != 0 && sem != 0){
+        //Si es un dia con horario, el index no es 0 y la semana no es 0 ni 1, se hacen los calculos
+        if (testData[index].horario != "--" && index != 0 && sem != 0 && sem != 1 ){
             //Se concatena por partes los strings de cada registro de entrada y salida
             var aux1 = testData[index].entrada + testData[index].entrada_comida
             var aux2 = testData[index].salida + testData[index].salida_comida
