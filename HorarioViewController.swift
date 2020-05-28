@@ -139,49 +139,64 @@ class HorarioViewController: UIViewController, UITableViewDelegate, UITableViewD
         //Tabla de Entrada****
         if tableView.isEqual(tableEntrada){
             let cell = tableView.dequeueReusableCell(withIdentifier: "idCustomCell", for: indexPath) as! CustomCell
-            //Insertar funciones o ifs de comparacion con Descanso y Falta
-            if falto(index: indexPath.row) {
-                cell.backgroundColor = colorFalta
-                cell.lbtitulo.isHidden = true
-                cell.buton.isHidden = true
-            } else if descanso(index: indexPath.row) {
+            if descanso(index: indexPath.row) {
                 cell.backgroundColor = colorDescanso
                 cell.lbtitulo.isHidden = true
                 cell.buton.isHidden = true
-            } else {
-                cell.lbtitulo.text = testData[indexPath.row].entrada
-                cell.backgroundColor = UIColor.white
-                cell.lbtitulo.isHidden = false
-                cell.buton.isHidden = false
             }
-
-            if entraTarde(index: indexPath.row)  {
-                cell.buton.isHidden = false
-            }
-            else {
+            else if sem == 0 && indexPath.row != 0{
+                cell.lbtitulo.isHidden = true
                 cell.buton.isHidden = true
+                cell.backgroundColor = UIColor.white
+            }
+            else{
+                if testData[indexPath.row].entrada == "--"  && testData[indexPath.row].horario != "--"  {
+                    cell.backgroundColor = colorFalta
+                    cell.lbtitulo.isHidden = true
+                    cell.buton.isHidden = true
+                } else {
+                    cell.lbtitulo.text = testData[indexPath.row].entrada
+                    cell.backgroundColor = UIColor.white
+                    cell.lbtitulo.isHidden = false
+                    if entraTarde(index: indexPath.row)  {
+                        cell.buton.isHidden = false
+                    }
+                    else {
+                        cell.buton.isHidden = true
+                    }
+                }
             }
             return cell
         }
         //Tabla de Salida****
         else if tableView.isEqual(tableSalida){
             let cell = tableView.dequeueReusableCell(withIdentifier: "idCustomCell", for: indexPath) as! CustomCell
-            //Insertar funciones o ifs de comparacion con Descanso y Falta
-            if falto(index: indexPath.row) {
-                cell.backgroundColor = colorFalta
+            if descanso(index: indexPath.row) {
+                cell.backgroundColor = colorDescanso
                 cell.lbtitulo.isHidden = true
                 cell.buton.isHidden = true
-            } else {
-                cell.lbtitulo.text = testData[indexPath.row].salida
-                cell.backgroundColor = UIColor.white
-                cell.lbtitulo.isHidden = false
-                cell.buton.isHidden = false
             }
-            if salidaTemprano(index: indexPath.row) {
-                cell.buton.isHidden = false
-            }
-            else {
+            else if sem == 0 && indexPath.row != 0 {
+                cell.lbtitulo.isHidden = true
                 cell.buton.isHidden = true
+                cell.backgroundColor = UIColor.white
+            }
+            else{
+                if testData[indexPath.row].salida == "--"  && testData[indexPath.row].horario != "--"  {
+                    cell.backgroundColor = colorFalta
+                    cell.lbtitulo.isHidden = true
+                    cell.buton.isHidden = true
+                } else {
+                    cell.lbtitulo.text = testData[indexPath.row].salida
+                    cell.backgroundColor = UIColor.white
+                    cell.lbtitulo.isHidden = false
+                    if salidaTemprano(index: indexPath.row) {
+                        cell.buton.isHidden = false
+                    }
+                    else {
+                        cell.buton.isHidden = true
+                    }
+                }
             }
             return cell
         }
@@ -196,8 +211,9 @@ class HorarioViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
             else {
                 cell.lbtitulo.text = testData[indexPath.row].horario
-                // INSERTAR--CAMBIAR FUNCION PARA CHECAR SI ES FALTA
-                if indexPath.row == 3 || indexPath.row == 6 {
+                cell.lbtitulo.isHidden = false
+                cell.backgroundColor = UIColor.white
+                if falto(index: indexPath.row){
                     cell.buton.isHidden = false
                 }
                 else {
@@ -211,27 +227,48 @@ class HorarioViewController: UIViewController, UITableViewDelegate, UITableViewD
             let cell = tableView.dequeueReusableCell(withIdentifier: "idCell", for: indexPath)
             //Tabla de Dias de la Semana
             if tableView.isEqual(tableDia) {
-                // a esta no le hagan nada -- BORRAR COMENTARIO
                 cell.textLabel?.text = testData[indexPath.row].dia
+            }
             //Tabla de Salida de Comida****
-            }else if tableView.isEqual(tableComidaSalida){
-                if falto(index: indexPath.row) {
-                    cell.backgroundColor = colorFalta
+            else if tableView.isEqual(tableComidaSalida){
+                if descanso(index: indexPath.row) {
+                    cell.backgroundColor = colorDescanso
                     cell.textLabel?.isHidden = true
-                } else {
-                    cell.textLabel?.text = testData[indexPath.row].salida_comida
-                    cell.backgroundColor = UIColor.white
-                    cell.textLabel?.isHidden = false
                 }
-            //Tabla de Entrada de Comida****
-            }else {
-                if falto(index: indexPath.row) {
-                    cell.backgroundColor = colorFalta
+                else if sem == 0 && indexPath.row != 0{
                     cell.textLabel?.isHidden = true
-                } else {
-                    cell.textLabel?.text = testData[indexPath.row].entrada_comida
                     cell.backgroundColor = UIColor.white
-                    cell.textLabel?.isHidden = false
+                }
+                else{
+                    if testData[indexPath.row].salida_comida == "--"  && testData[indexPath.row].horario != "--" {
+                        cell.backgroundColor = colorFalta
+                        cell.textLabel?.isHidden = true
+                    } else {
+                        cell.textLabel?.text = testData[indexPath.row].salida_comida
+                        cell.backgroundColor = UIColor.white
+                        cell.textLabel?.isHidden = false
+                    }
+                }
+            }
+            //Tabla de Entrada de Comida****
+            else {
+                if descanso(index: indexPath.row) {
+                cell.backgroundColor = colorDescanso
+                cell.textLabel?.isHidden = true
+                }
+                else if sem == 0 && indexPath.row != 0{
+                    cell.textLabel?.isHidden = true
+                    cell.backgroundColor = UIColor.white
+                }
+                else{
+                    if testData[indexPath.row].entrada_comida == "--"  && testData[indexPath.row].horario != "--"  {
+                        cell.backgroundColor = colorFalta
+                        cell.textLabel?.isHidden = true
+                    } else {
+                        cell.textLabel?.text = testData[indexPath.row].entrada_comida
+                        cell.backgroundColor = UIColor.white
+                        cell.textLabel?.isHidden = false
+                    }
                 }
             }
             return cell
