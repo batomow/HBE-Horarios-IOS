@@ -139,28 +139,64 @@ class HorarioViewController: UIViewController, UITableViewDelegate, UITableViewD
         //Tabla de Entrada****
         if tableView.isEqual(tableEntrada){
             let cell = tableView.dequeueReusableCell(withIdentifier: "idCustomCell", for: indexPath) as! CustomCell
-            //Insertar funciones o ifs de comparacion con Descanso y Falta
-           // cell.backgroundColor = colorDescanso
-            // cell.backgroundColor = colorFalta
-            cell.lbtitulo.text = testData[indexPath.row].entrada
-            if entraTarde(index: indexPath.row)  {
-                cell.buton.isHidden = false
-            }
-            else {
+            if descanso(index: indexPath.row) {
+                cell.backgroundColor = colorDescanso
+                cell.lbtitulo.isHidden = true
                 cell.buton.isHidden = true
+            }
+            else if sem == 0 && indexPath.row != 0{
+                cell.lbtitulo.isHidden = true
+                cell.buton.isHidden = true
+                cell.backgroundColor = UIColor.white
+            }
+            else{
+                if testData[indexPath.row].entrada == "--"  && testData[indexPath.row].horario != "--"  {
+                    cell.backgroundColor = colorFalta
+                    cell.lbtitulo.isHidden = true
+                    cell.buton.isHidden = true
+                } else {
+                    cell.lbtitulo.text = testData[indexPath.row].entrada
+                    cell.backgroundColor = UIColor.white
+                    cell.lbtitulo.isHidden = false
+                    if entraTarde(index: indexPath.row)  {
+                        cell.buton.isHidden = false
+                    }
+                    else {
+                        cell.buton.isHidden = true
+                    }
+                }
             }
             return cell
         }
         //Tabla de Salida****
         else if tableView.isEqual(tableSalida){
             let cell = tableView.dequeueReusableCell(withIdentifier: "idCustomCell", for: indexPath) as! CustomCell
-            //Insertar funciones o ifs de comparacion con Descanso y Falta
-            cell.lbtitulo.text = testData[indexPath.row].salida
-            if salidaTemprano(index: indexPath.row) {
-                cell.buton.isHidden = false
-            }
-            else {
+            if descanso(index: indexPath.row) {
+                cell.backgroundColor = colorDescanso
+                cell.lbtitulo.isHidden = true
                 cell.buton.isHidden = true
+            }
+            else if sem == 0 && indexPath.row != 0 {
+                cell.lbtitulo.isHidden = true
+                cell.buton.isHidden = true
+                cell.backgroundColor = UIColor.white
+            }
+            else{
+                if testData[indexPath.row].salida == "--"  && testData[indexPath.row].horario != "--"  {
+                    cell.backgroundColor = colorFalta
+                    cell.lbtitulo.isHidden = true
+                    cell.buton.isHidden = true
+                } else {
+                    cell.lbtitulo.text = testData[indexPath.row].salida
+                    cell.backgroundColor = UIColor.white
+                    cell.lbtitulo.isHidden = false
+                    if salidaTemprano(index: indexPath.row) {
+                        cell.buton.isHidden = false
+                    }
+                    else {
+                        cell.buton.isHidden = true
+                    }
+                }
             }
             return cell
         }
@@ -175,8 +211,9 @@ class HorarioViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
             else {
                 cell.lbtitulo.text = testData[indexPath.row].horario
-                // INSERTAR--CAMBIAR FUNCION PARA CHECAR SI ES FALTA
-                if indexPath.row == 3 || indexPath.row == 6 {
+                cell.lbtitulo.isHidden = false
+                cell.backgroundColor = UIColor.white
+                if falto(index: indexPath.row) {
                     cell.buton.isHidden = false
                 }
                 else {
@@ -190,14 +227,49 @@ class HorarioViewController: UIViewController, UITableViewDelegate, UITableViewD
             let cell = tableView.dequeueReusableCell(withIdentifier: "idCell", for: indexPath)
             //Tabla de Dias de la Semana
             if tableView.isEqual(tableDia) {
-                // a esta no le hagan nada -- BORRAR COMENTARIO
                 cell.textLabel?.text = testData[indexPath.row].dia
+            }
             //Tabla de Salida de Comida****
-            }else if tableView.isEqual(tableComidaSalida){
-                cell.textLabel?.text = testData[indexPath.row].salida_comida
+            else if tableView.isEqual(tableComidaSalida){
+                if descanso(index: indexPath.row) {
+                    cell.backgroundColor = colorDescanso
+                    cell.textLabel?.isHidden = true
+                }
+                else if sem == 0 && indexPath.row != 0{
+                    cell.textLabel?.isHidden = true
+                    cell.backgroundColor = UIColor.white
+                }
+                else{
+                    if testData[indexPath.row].salida_comida == "--"  && testData[indexPath.row].horario != "--" {
+                        cell.backgroundColor = colorFalta
+                        cell.textLabel?.isHidden = true
+                    } else {
+                        cell.textLabel?.text = testData[indexPath.row].salida_comida
+                        cell.backgroundColor = UIColor.white
+                        cell.textLabel?.isHidden = false
+                    }
+                }
+            }
             //Tabla de Entrada de Comida****
-            }else {
-                cell.textLabel?.text = testData[indexPath.row].entrada_comida
+            else {
+                if descanso(index: indexPath.row) {
+                cell.backgroundColor = colorDescanso
+                cell.textLabel?.isHidden = true
+                }
+                else if sem == 0 && indexPath.row != 0{
+                    cell.textLabel?.isHidden = true
+                    cell.backgroundColor = UIColor.white
+                }
+                else{
+                    if testData[indexPath.row].entrada_comida == "--"  && testData[indexPath.row].horario != "--"  {
+                        cell.backgroundColor = colorFalta
+                        cell.textLabel?.isHidden = true
+                    } else {
+                        cell.textLabel?.text = testData[indexPath.row].entrada_comida
+                        cell.backgroundColor = UIColor.white
+                        cell.textLabel?.isHidden = false
+                    }
+                }
             }
             return cell
         }
@@ -299,7 +371,7 @@ class HorarioViewController: UIViewController, UITableViewDelegate, UITableViewD
     // MARK: - Logica Marcajes
     //Funcion que comprueba si el usuario entro despues de su hora marcada de entrada
     func entraTarde(index : Int) -> Bool{
-        //Si la entrada tiene datos y el index no es 0, se hacen los calculos
+        //Si la entrada tiene datos y el index no es 0 , se hacen los calculos
         if (testData[index].entrada != "--" && index != 0){
             //Se parte el string de horario para tener las dos horas de manera separada
             let horario = testData[index].horario.split(separator: "-")
@@ -336,6 +408,44 @@ class HorarioViewController: UIViewController, UITableViewDelegate, UITableViewD
             let date2 = dataFormatter.date(from: testData[index].salida)!
             //Si la hora de salida agendada es mayor a la hora de salida del usuario
             if (date1 > date2){
+                return true
+            } else {
+                return false
+            }
+        } else {
+            return false
+        }
+    }
+    
+    func falto(index : Int) -> Bool {
+        //Si es un dia con horario, el index no es 0 y la semana no es 0 ni 1, se hacen los calculos
+        if (testData[index].horario != "--" && index != 0 && sem != 0 && sem != 1 ){
+            //Se concatena por partes los strings de cada registro de entrada y salida
+            var aux1 = testData[index].entrada + testData[index].entrada_comida
+            var aux2 = testData[index].salida + testData[index].salida_comida
+            //El string final se guarda en aux3
+            var aux3 = aux1+aux2
+            //Si aux3 es igual a el string resultante de todos los dias vacios se regresa true
+            if (aux3 == "--------"){
+                return true
+            } else {
+                return false
+            }
+        } else {
+            return false
+        }
+    }
+    
+    func descanso(index : Int) -> Bool {
+        //Si el index no es 0 , se hacen los calculos
+        if (index != 0){
+            //Se concatena por partes los strings de cada registro de entrada y salida
+            var aux1 = testData[index].entrada + testData[index].entrada_comida
+            var aux2 = testData[index].salida + testData[index].salida_comida
+            //El string final se guarda en aux3
+            var aux3 = aux1+aux2+testData[index].horario
+            //Si aux3 es igual a el string resultante de todos los dias vacios se regresa true
+            if (aux3 == "----------"){
                 return true
             } else {
                 return false
