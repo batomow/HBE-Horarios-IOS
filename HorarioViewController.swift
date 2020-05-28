@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+// Clase de estructura de datos de la semana
 class ResumeData {
     var dia: String
     var horario: String
@@ -25,28 +25,41 @@ class ResumeData {
     }
 }
 
+// Clase de la celda customeable con label y boton
 class CustomCell: UITableViewCell {
     @IBOutlet weak var lbtitulo: UILabel!
     @IBOutlet weak var buton: UIButton!
 }
-
+// Clase del ViewController de Horarios
 class HorarioViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
-    
+    //Inicializacion de variables de botones
     @IBOutlet weak var lbSemAnt: UILabel!
     @IBOutlet weak var btnSemAnt: UIButton!
     @IBOutlet weak var btnSigSem: UIButton!
     @IBOutlet weak var lbSigSem: UILabel!
+    
+    //Inicializacion de variables de TableViews
     @IBOutlet weak var tableDia: UITableView!
     @IBOutlet weak var tableHorario: UITableView!
     @IBOutlet weak var tableEntrada: UITableView!
     @IBOutlet weak var tableComidaSalida: UITableView!
     @IBOutlet weak var tableComidaEntrada: UITableView!
     @IBOutlet weak var tableSalida: UITableView!
+    
+    //Inicializacion de variables de Resumen de la Semana
+    
+    @IBOutlet weak var lbTotalNormal: UILabel!
+    @IBOutlet weak var lbTotalExcedente: UILabel!
+    
+    //Colores de background
+    let colorDescanso = UIColor(red: (187/255.0), green: (187/255.0), blue: (187/255.0), alpha: 0.5)
+    let colorFalta = UIColor(red: (238/255.0), green: (87/255.0), blue: (74/255.0), alpha: 0.5)
+    
     //Variable de tipo monolito
     var monolito: Monolito!
     //contador globar que indicara la semana actual
     var sem: Int!
-    
+    //Inicializacion de arreglo de la varieble tipo ResumeData
     var testData: [ResumeData] = [
         ResumeData(dia: "Dia", horario: "Horario", entrada: "Entrada", salida_comida: "Salida Comida", entrada_comida: "Entrada Comida", salida: "Salida"),
         ResumeData(dia: "Lunes", horario: "--", entrada: "--", salida_comida: "--", entrada_comida: "--", salida: "--"),
@@ -93,29 +106,42 @@ class HorarioViewController: UIViewController, UITableViewDelegate, UITableViewD
         
     }
     
-    
+    //MARK: - Funciones de Tap de botones
+    //Bonton en Tabla Entrada
     @IBAction func tapMEntrada(_ sender: UIButton) {
         let cell = sender.superview?.superview as! UITableViewCell
         let indexPath = self.tableEntrada.indexPath(for: cell)
     }
-    
+    //Bonton en Tabla Salida
     @IBAction func tapMSalida(_ sender: UIButton) {
         let cell = sender.superview?.superview as! UITableViewCell
-        let indexPath = self.tableEntrada.indexPath(for: cell)
+        let indexPath = self.tableSalida.indexPath(for: cell)
+    }
+    
+    //Boton en Tabla Horario
+    @IBAction func tapMHorario(_ sender: UIButton) {
+        let cell = sender.superview?.superview as! UITableViewCell
+        let indexPath = self.tableHorario.indexPath(for: cell)
     }
     
     // MARK: - Table View Stuff
+    //Numero de secciones de las TableViews
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
+    //Numero de filas de las TableViews
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return testData.count
     }
     
+    // Contenido de las celdas de las TableViews
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        //Tabla de Entrada****
         if tableView.isEqual(tableEntrada){
             let cell = tableView.dequeueReusableCell(withIdentifier: "idCustomCell", for: indexPath) as! CustomCell
+            //Insertar funciones o ifs de comparacion con Descanso y Falta
+           // cell.backgroundColor = colorDescanso
+            // cell.backgroundColor = colorFalta
             cell.lbtitulo.text = testData[indexPath.row].entrada
             if indexPath.row == 1 || indexPath.row == 4 {
                 cell.buton.isHidden = false
@@ -125,8 +151,10 @@ class HorarioViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
             return cell
         }
+        //Tabla de Salida****
         else if tableView.isEqual(tableSalida){
             let cell = tableView.dequeueReusableCell(withIdentifier: "idCustomCell", for: indexPath) as! CustomCell
+            //Insertar funciones o ifs de comparacion con Descanso y Falta
             cell.lbtitulo.text = testData[indexPath.row].salida
             if indexPath.row == 3 || indexPath.row == 6 {
                 cell.buton.isHidden = false
@@ -136,41 +164,67 @@ class HorarioViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
             return cell
         }
+        //Tabla de Horario
+        else if tableView.isEqual(tableHorario){
+            let cell = tableView.dequeueReusableCell(withIdentifier: "idCustomCell", for: indexPath) as! CustomCell
+            // revisa si es dia de descanso
+            if testData[indexPath.row].horario == "--" {
+                cell.backgroundColor = colorDescanso
+                cell.lbtitulo.isHidden = true
+                cell.buton.isHidden = true
+            }
+            else {
+                cell.lbtitulo.text = testData[indexPath.row].horario
+                // INSERTAR--CAMBIAR FUNCION PARA CHECAR SI ES FALTA
+                if indexPath.row == 3 || indexPath.row == 6 {
+                    cell.buton.isHidden = false
+                }
+                else {
+                    cell.buton.isHidden = true
+                }
+            }
+            return cell
+        }
+        //Tablas restantes con idCell
         else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "idCell", for: indexPath)
+            //Tabla de Dias de la Semana
             if tableView.isEqual(tableDia) {
+                // a esta no le hagan nada -- BORRAR COMENTARIO
                 cell.textLabel?.text = testData[indexPath.row].dia
-            }else if tableView.isEqual(tableHorario) {
-                cell.textLabel?.text = testData[indexPath.row].horario
+            //Tabla de Salida de Comida****
             }else if tableView.isEqual(tableComidaSalida){
                 cell.textLabel?.text = testData[indexPath.row].salida_comida
-            }else { // entrada comida
+            //Tabla de Entrada de Comida****
+            }else {
                 cell.textLabel?.text = testData[indexPath.row].entrada_comida
             }
             return cell
         }
     }
     
-    
-    
-    
     // MARK: - Orientation
-
     override func viewWillAppear(_ animated: Bool) {
         AppDelegate.AppUtility.lockOrientation(UIInterfaceOrientationMask.landscapeRight, andRotateTo: UIInterfaceOrientation.landscapeRight)
     }
     
     // MARK: - Navigation
-
     // In a storyboard-based application,l you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "entrada" {
+            //View para el popup de marcaje de entrada
             let viewEnt = segue.destination as! PopupMarcaje
-            viewEnt.entrada = true
+            viewEnt.tipo = "ent"
         }
+            //View para el popup de marcaje de salida
         else if segue.identifier == "salida"{
             let viewSal = segue.destination as! PopupMarcaje
-            viewSal.entrada = false
+            viewSal.tipo = "sal"
+        }
+            //View para el popup de marcaje de falta 
+        else if segue.identifier == "falta"{
+            let viewSal = segue.destination as! PopupMarcaje
+            viewSal.tipo = "falta"
         }
     }
     
