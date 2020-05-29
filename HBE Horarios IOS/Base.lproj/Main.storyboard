@@ -440,7 +440,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Horas: 10" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P4R-r2-GgP">
-                                <rect key="frame" x="371" y="335" width="294" height="17"/>
+                                <rect key="frame" x="344" y="335" width="351" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="17" id="eZN-vE-6Qh"/>
                                 </constraints>
@@ -471,7 +471,7 @@
                             <constraint firstItem="FOa-U1-z7Z" firstAttribute="leading" secondItem="JjL-d1-Fxh" secondAttribute="leading" constant="54" id="AZu-l4-NSo"/>
                             <constraint firstItem="JjL-d1-Fxh" firstAttribute="bottom" secondItem="U2z-p3-QGe" secondAttribute="bottom" constant="24" id="DFL-SA-TUL"/>
                             <constraint firstItem="mP6-EX-3Fp" firstAttribute="leading" secondItem="mqg-FZ-kwc" secondAttribute="leading" id="DhH-Zy-nus"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="P4R-r2-GgP" secondAttribute="trailing" constant="161" id="HRr-OJ-JdT"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="P4R-r2-GgP" secondAttribute="trailing" constant="131" id="HRr-OJ-JdT"/>
                             <constraint firstItem="4gx-VQ-wPv" firstAttribute="top" secondItem="JjL-d1-Fxh" secondAttribute="top" constant="7" id="IBG-hs-t6n"/>
                             <constraint firstItem="wJx-pC-Eqq" firstAttribute="leading" secondItem="U2z-p3-QGe" secondAttribute="trailing" constant="8" id="M2L-Da-yAP"/>
                             <constraint firstItem="tMb-no-t4R" firstAttribute="leading" secondItem="mqg-FZ-kwc" secondAttribute="leadingMargin" constant="154" id="Nt7-KO-Rar"/>
@@ -491,7 +491,7 @@
                             <constraint firstItem="JjL-d1-Fxh" firstAttribute="bottom" secondItem="wJx-pC-Eqq" secondAttribute="bottom" constant="20" id="etC-xV-9X1"/>
                             <constraint firstAttribute="trailing" secondItem="mP6-EX-3Fp" secondAttribute="trailing" id="fTa-WB-qx4"/>
                             <constraint firstItem="P4R-r2-GgP" firstAttribute="centerY" secondItem="rMe-3r-DgB" secondAttribute="centerY" id="ie3-01-GZh"/>
-                            <constraint firstItem="P4R-r2-GgP" firstAttribute="leading" secondItem="mqg-FZ-kwc" secondAttribute="leadingMargin" constant="351" id="jhZ-FN-JRr" userLabel="Lb Total Horas.leading = leadingMargin + 330"/>
+                            <constraint firstItem="P4R-r2-GgP" firstAttribute="leading" secondItem="mqg-FZ-kwc" secondAttribute="leadingMargin" constant="324" id="jhZ-FN-JRr"/>
                             <constraint firstItem="kjR-eK-uS2" firstAttribute="top" secondItem="mP6-EX-3Fp" secondAttribute="bottom" constant="19" id="k3S-gS-pQz"/>
                             <constraint firstItem="JjL-d1-Fxh" firstAttribute="trailing" secondItem="kjR-eK-uS2" secondAttribute="trailing" constant="20" id="oux-E6-v31"/>
                             <constraint firstItem="JjL-d1-Fxh" firstAttribute="trailing" secondItem="wJx-pC-Eqq" secondAttribute="trailing" constant="20" id="viA-2d-A2r"/>
