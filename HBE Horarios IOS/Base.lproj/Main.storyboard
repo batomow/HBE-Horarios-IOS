@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="landscape" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,11 +11,11 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="HBE_Horarios_IOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kSe-yM-fQl">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kSe-yM-fQl">
                                 <rect key="frame" x="51" y="320" width="565" height="0.0"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ID Socio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ekd-hB-kv6">
@@ -30,7 +30,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iGA-sF-TWu" customClass="RoundButton" customModule="HBE_Horarios_IOS" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iGA-sF-TWu" customClass="RoundButton" customModule="HBE_Horarios_IOS" customModuleProvider="target">
                                         <rect key="frame" x="229" y="-77" width="107" height="49"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <constraints>
@@ -87,7 +87,7 @@
                                 </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hebLogo" translatesAutoresizingMaskIntoConstraints="NO" id="UCl-XO-Xqo">
-                                <rect key="frame" x="20" y="49" width="631" height="239"/>
+                                <rect key="frame" x="20" y="49" width="631" height="873"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="UCl-XO-Xqo" secondAttribute="height" multiplier="339:146" id="Bci-3A-zjp"/>
                                 </constraints>
@@ -106,6 +106,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="MLB-uQ-sGQ"/>
                     <connections>
                         <outlet property="tfID" destination="Xne-n7-rqB" id="ysr-8U-Jee"/>
                         <outlet property="tfPass" destination="gHb-iF-7HG" id="0bS-eG-W15"/>
@@ -114,7 +115,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-152" y="105"/>
+            <point key="canvasLocation" x="2219.6401799100449" y="104.8"/>
         </scene>
         <!--Horario View Controller-->
         <scene sceneID="Ij0-39-JgB">
@@ -135,13 +136,6 @@
                                 <rect key="frame" x="275.5" y="7" width="116" height="19.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cerrar Sesión" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fXd-YN-20r">
-                                <rect key="frame" x="557.5" y="6.5" width="104.5" height="20.5"/>
-                                <color key="backgroundColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="María Perez" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4gx-VQ-wPv">
@@ -441,6 +435,16 @@
                                     <constraint firstAttribute="bottom" secondItem="pZ9-Qs-MqR" secondAttribute="bottom" id="xcT-cE-rmY"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m6w-3D-dIc">
+                                <rect key="frame" x="546" y="7" width="101" height="21"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Cerrar Session">
+                                    <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="regresar:" destination="uCG-Gz-Dec" eventType="touchUpInside" id="QRB-na-LWo"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -455,16 +459,17 @@
                             <constraint firstItem="wJx-pC-Eqq" firstAttribute="leading" secondItem="U2z-p3-QGe" secondAttribute="trailing" constant="8" id="M2L-Da-yAP"/>
                             <constraint firstItem="JjL-d1-Fxh" firstAttribute="bottom" secondItem="P4R-r2-GgP" secondAttribute="bottom" constant="28.5" id="NCm-5E-6bS"/>
                             <constraint firstItem="4gx-VQ-wPv" firstAttribute="leading" secondItem="JjL-d1-Fxh" secondAttribute="leading" constant="8" id="OJE-CV-arM"/>
+                            <constraint firstItem="m6w-3D-dIc" firstAttribute="leading" secondItem="YqF-rB-s8R" secondAttribute="trailing" constant="154.5" id="Q9S-yZ-JiW"/>
+                            <constraint firstItem="JjL-d1-Fxh" firstAttribute="trailing" secondItem="m6w-3D-dIc" secondAttribute="trailing" constant="20" id="SNK-at-UCw"/>
                             <constraint firstItem="mP6-EX-3Fp" firstAttribute="top" secondItem="JjL-d1-Fxh" secondAttribute="top" id="TC1-Ba-CNN"/>
-                            <constraint firstItem="JjL-d1-Fxh" firstAttribute="trailing" secondItem="fXd-YN-20r" secondAttribute="trailing" constant="5" id="TYM-ev-D78"/>
                             <constraint firstItem="YqF-rB-s8R" firstAttribute="centerY" secondItem="mP6-EX-3Fp" secondAttribute="centerY" id="UQe-LH-uJ9"/>
                             <constraint firstItem="P4R-r2-GgP" firstAttribute="top" secondItem="kjR-eK-uS2" secondAttribute="bottom" constant="8" id="YWX-ka-4UF"/>
                             <constraint firstItem="rMe-3r-DgB" firstAttribute="leading" secondItem="JjL-d1-Fxh" secondAttribute="leading" constant="20" id="aao-iH-MGX"/>
                             <constraint firstItem="4gx-VQ-wPv" firstAttribute="centerY" secondItem="mP6-EX-3Fp" secondAttribute="centerY" id="bE4-6u-NCr"/>
-                            <constraint firstItem="fXd-YN-20r" firstAttribute="top" secondItem="JjL-d1-Fxh" secondAttribute="top" constant="6.5" id="eU3-w8-kPW"/>
+                            <constraint firstItem="m6w-3D-dIc" firstAttribute="top" secondItem="JjL-d1-Fxh" secondAttribute="top" constant="7" id="eIG-dl-NMM"/>
+                            <constraint firstItem="kjR-eK-uS2" firstAttribute="top" secondItem="m6w-3D-dIc" secondAttribute="bottom" constant="24.5" id="eWu-0n-dvM"/>
                             <constraint firstItem="kjR-eK-uS2" firstAttribute="centerX" secondItem="mqg-FZ-kwc" secondAttribute="centerX" id="eZI-qK-de0"/>
                             <constraint firstItem="JjL-d1-Fxh" firstAttribute="bottom" secondItem="wJx-pC-Eqq" secondAttribute="bottom" constant="20" id="etC-xV-9X1"/>
-                            <constraint firstItem="fXd-YN-20r" firstAttribute="centerY" secondItem="mP6-EX-3Fp" secondAttribute="centerY" id="fMj-uU-Qk8"/>
                             <constraint firstAttribute="trailing" secondItem="mP6-EX-3Fp" secondAttribute="trailing" id="fTa-WB-qx4"/>
                             <constraint firstItem="kjR-eK-uS2" firstAttribute="top" secondItem="mP6-EX-3Fp" secondAttribute="bottom" constant="19" id="k3S-gS-pQz"/>
                             <constraint firstItem="JjL-d1-Fxh" firstAttribute="trailing" secondItem="kjR-eK-uS2" secondAttribute="trailing" constant="20" id="oux-E6-v31"/>
@@ -497,7 +502,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tCU-Z8-rJX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="567.16641679160421" y="104.8"/>
+            <point key="canvasLocation" x="2939.2803598200903" y="104.8"/>
         </scene>
         <!--Popup Resumen Dia-->
         <scene sceneID="q7e-Sw-MMj">
@@ -576,7 +581,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l2o-4s-BWH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1289.5052473763119" y="104.8"/>
+            <point key="canvasLocation" x="3660.7196401799101" y="104.8"/>
         </scene>
         <!--Popup Marcaje-->
         <scene sceneID="gdZ-OM-IMA">
@@ -641,14 +646,14 @@
             <point key="canvasLocation" x="566.26686656671666" y="940"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="heV-Lj-tF8"/>
+    </inferredMetricsTieBreakers>
     <resources>
-        <image name="arrowshape.turn.up.left.fill" catalog="system" width="64" height="52"/>
-        <image name="arrowshape.turn.up.right.fill" catalog="system" width="64" height="52"/>
+        <image name="arrowshape.turn.up.left.fill" catalog="system" width="128" height="106"/>
+        <image name="arrowshape.turn.up.right.fill" catalog="system" width="128" height="106"/>
         <image name="hebLogo" width="2682" height="873"/>
         <image name="mark1" width="51" height="131"/>
         <image name="redBT" width="81" height="81"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="heV-Lj-tF8"/>
-    </inferredMetricsTieBreakers>
 </document>

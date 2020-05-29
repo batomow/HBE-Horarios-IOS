@@ -116,7 +116,14 @@ class HorarioViewController: UIViewController, UITableViewDelegate, UITableViewD
             data.salida_comida = currentdias[index-1].breakLeave
             data.entrada_comida = currentdias[index-1].breakReturn
         }
-        
+   
+    }
+    //MARK: - Orientation
+    override func viewWillAppear(_ animated: Bool) {
+        AppDelegate.AppUtility.lockOrientation(UIInterfaceOrientationMask.landscapeRight, andRotateTo: UIInterfaceOrientation.landscapeRight)
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        AppDelegate.AppUtility.lockOrientation(UIInterfaceOrientationMask.portrait, andRotateTo: UIInterfaceOrientation.portrait)
     }
     
     //MARK: - Funciones de Tap de botones
@@ -286,11 +293,6 @@ class HorarioViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
             return cell
         }
-    }
-    
-    // MARK: - Orientation
-    override func viewWillAppear(_ animated: Bool) {
-        AppDelegate.AppUtility.lockOrientation(UIInterfaceOrientationMask.landscapeRight, andRotateTo: UIInterfaceOrientation.landscapeRight)
     }
     
     // MARK: - Navigation
@@ -508,4 +510,7 @@ class HorarioViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
+    @IBAction func regresar(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
 }
