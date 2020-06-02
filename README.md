@@ -40,6 +40,8 @@ Para lograr esto, vamos a utilizar las siguientes tecnologias.
 
 !['alt text'](https://github.com/batomow/HBE-Horarios-IOS/blob/manual-instalacion/iconos/05.svg?raw=true)
 
+
+
 1. Descargar el repositorio de la aplicación y del servidor en nuestra computadora. Para esto se puede simplemente usar el boton de download o usar los siguientes comandos en la terminal.
 
 - Para moverse al escritorio, si esta en español, usar _Escritorio_ en vez de _Desktop_: `cd Desktop` 
@@ -47,6 +49,8 @@ Para lograr esto, vamos a utilizar las siguientes tecnologias.
 - Para descargar el server: `git clone https://github.com/batomow/HEB-BACK`
   
 Para poder editar/ver el codigo de la aplicación es necesario descargar xcode, esto se puede hacer desde la appstore. 
+ 
+ 
  
 2. Como no contamos con un celular, lo que vamos a hacer es hacer uso del emulador de xcode para poder usar un celular dentro de nuestra computadora. 
  
@@ -59,6 +63,8 @@ Para poder editar/ver el codigo de la aplicación es necesario descargar xcode, 
 Con esto nuestros sistema se ve asi: 
 
 !['alt text'](https://github.com/batomow/HBE-Horarios-IOS/blob/manual-instalacion/iconos/07.svg?raw=true)
+
+
 
 3. [Firebase](https://firebase.google.com/) es una plataforma que provee distintos servicios haciendo uso de la nube de [Google](google.com). Nosotros necesitamos una base de datos que podamos acceder desde la red. Estrictamente hablando lo que necesitamos es cualquier servicio en linea que nos pueda regresar esta información en el siguiente formato: 
 ```
@@ -139,7 +145,7 @@ Ahora podemos ver visualmente nuestra base de datos y la podemos poblar. El obje
 
 La imagen muestra nuestra base de datos. Los rectangulos son _coleciones_ y _subcolecions_, mientras que los documentos son _documentos_. **NOTA: Aunque el dia sea libre o no se hallan registrado horas para un campo, debe de existir ese campo y contener aunque sea "--" o cualquier caracter, de lo contrario el servidor intermediario no podra darle el formato adecuado a los datos y marcara error**
 
-Una vez regreada nuestra base de datos, necesitamos generar nuestra _ServiceAccountKey.json_. 
+Una vez creada nuestra base de datos, necesitamos generar nuestra _ServiceAccountKey.json_. 
 - Nos vamos a _users and permissions_. Donde podemos darle acceso a otros ususarios para trabajar colaborativamente. 
 - Seleccionamos la pestaña de _Service Accounts_, donde vendra el codigo exacto que utiliza el BACKEND para connectar con la base de datos que acabamos de crear, asi como un boton azul para generar nuestra _ServiceAccountKey.json_. 
 - Le damos click a _Generate new private key_. 
@@ -155,6 +161,8 @@ Las siguientes imagenes muestran este proceso.
 !['alt text'](https://github.com/batomow/HBE-Horarios-IOS/blob/manual-instalacion/iconos/fb08.svg?raw=true)
 
 Con esto queda creada nuestra base de datos.
+ 
+ 
  
 4. Nuestro servidor puede ser cualquier aparato que nos permita mandarle y recibir datos usando llamadas http. En nuestro caso vamos a utilizar nuestra computadora. **El repositorio de la aplicación ya esta configurado para hacer llamadas a nuestra computadora, si se quieren hacer llamadas a otro servidor es necesario modificar el [APIRequest.swift](https://github.com/batomow/HBE-Horarios-IOS/blob/master/APIRequest.swift), cambiando el url destino** `44 let resourceString = "http://localhost:8000/api/\(endpoint)`. 
 
