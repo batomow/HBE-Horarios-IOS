@@ -67,7 +67,7 @@ Con esto nuestros sistema se ve asi:
 
 
 3. [Firebase](https://firebase.google.com/) es una plataforma que provee distintos servicios haciendo uso de la nube de [Google](google.com). Nosotros necesitamos una base de datos que podamos acceder desde la red. Estrictamente hablando lo que necesitamos es cualquier servicio en linea que nos pueda regresar esta información en el siguiente formato: 
-```
+```json
 {
     "error": false,
     "message": "Bienvenido!",
@@ -99,7 +99,7 @@ Con esto nuestros sistema se ve asi:
             },
             {...},
             {...},
-            {..,},
+            {...},
             {...},
             {...},
             {...}
