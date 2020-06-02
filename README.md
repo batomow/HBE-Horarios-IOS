@@ -189,7 +189,7 @@ Ahora nuestro sistema se ve asi:
 
 !['alt text'](https://github.com/batomow/HBE-Horarios-IOS/blob/manual-instalacion/iconos/11.svg?raw=true)
 
----------------------------
+
 
 Ahora que esta creada nuestra base de datos y generamos nuestra _ServiceAccounteKey.json_, agregamos este documento a la raíz del proyecto, es decir, lo metemos al folder HEB-BACK. Ahora firebase lo podemos accesar tan facil como escribir la dirección url en nuestro buscador y consultar la consola. Nuestro servidor hace esto tras cortinas, por lo que no hace falta mas que tener connección a internet para que la aplicación funcione. La siguiente imagen muestra este concepto: 
 
